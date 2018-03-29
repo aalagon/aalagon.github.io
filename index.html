@@ -111,14 +111,14 @@
 
     <script>
         $("#map").css({height:($(document).height() - $("#map").offset().top)});
-        var map, infoWindow;
+        var map, infoWindow, marker;
         function initMap() {
             var uluru = {lat: -25.363, lng: 131.044};
             map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
                 center: uluru
             });
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
                 position: uluru,
                 map: map
             });
@@ -128,13 +128,11 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                 var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
                 };
 
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
-                infoWindow.open(map);
+                marker.setPosition(pos);
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -146,18 +144,14 @@
         }
 
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(browserHasGeolocation ?
+            marker.setPosition(pos);
+            console.log(browserHasGeolocation ?
                 'Error: The Geolocation service failed.' :
                 'Error: Your browser doesn\'t support geolocation.');
-            infoWindow.open(map);
         }
       </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsgLMDVVgQaoW1vdTkQUWHBR9SJADORhI&callback=initMap">
-    </script>
-    <script async defer
-      src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAsgLMDVVgQaoW1vdTkQUWHBR9SJADORhI">
     </script>
 </body>
 
