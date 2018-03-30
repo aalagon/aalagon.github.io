@@ -131,27 +131,17 @@
 
             // Try HTML5 geolocation.
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                var currentPos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
                 var icon = {
                     url: "img/car.png",
                     scaledSize: new google.maps.Size(50,50)
                 };
                 marker = new google.maps.Marker({
-                    position: currentPos,
                     map: map,
                     icon: icon
                 });
-
-                map.setCenter(currentPos);
+                updatePosition();
                 // Put code here to post data to the database
                 // .......
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
             } else {
                 // Browser doesn't support Geolocation
                 handleLocationError(false, infoWindow, map.getCenter());
@@ -159,6 +149,16 @@
 
             google.maps.event.addListener(map, 'click', function(event) {
                 console.log(event.latLng.lat() + " " + event.latLng.lng());
+            });
+        }
+
+        function updatePosition() {
+            console.log("Position");
+            var positron = navigator.geolocation.watchPosition(function(position){
+                marker.setPosition(
+                    new google.maps.LatLng(position.coords.latitude,position.coords.longitude)
+                );
+                console.log(position);
             });
         }
 
