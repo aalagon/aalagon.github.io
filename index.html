@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark indigo">
 
             <!-- Navbar brand -->
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Linque</a>
         
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
@@ -39,35 +39,11 @@
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
+                        <button disabled type="button" class="btn btn-primary push-notif-button">Enable Push Messaging</button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-        
-                    <!-- Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-        
                 </ul>
                 <!-- Links -->
         
-                <form class="form-inline">
-                    <div class="md-form mt-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    </div>
-                </form>
             </div>
             <!-- Collapsible content -->
         
@@ -94,7 +70,8 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
-
+    <script type="text/javascript" src="js/push-notif.js"></script>
+    
     <script>
         $("#map").css({height:($(document).height() - $("#map").offset().top)});
         var map, infoWindow, marker;
